@@ -13,9 +13,9 @@ class ServerResponse
     @request_lines = request_lines
   end
 
-  def write_response(path_file)
+  def write_response(path_lines)
     response = "#{request_lines.join("<br>")}"
-    output = "<html><head></head><body><p>#{response}</p><h1>#{path_file}</h1></body></html>"
+    output = "<html><head></head><body><p>#{response}</p><h1>#{path_lines}</h1></body></html>"
   end
 
   def write_header(output)

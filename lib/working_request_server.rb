@@ -5,7 +5,6 @@ require './lib/word_search'
 # require './lib/json_class'
 require './lib/game_path'
 require './lib/server_response'
-# require './lib/parsing_class'
 
 class HTTPServer
   attr_reader   :client, 
@@ -74,10 +73,14 @@ class HTTPServer
   def redirect_response(client)
     header = ['HTTP/1.1 301 Moved Permanently',
               'location: http://localhost:9292/game',
-              "date: #{request_timestamp}",
+              "date: #{add_timestamp}",
               "server: ruby",
               "content-type: text/html; charset=iso-8859-1\r\n\r\n"].join("\r\n")
     client.puts header 
+  end
+
+  def add_timestamp
+    Time.now
   end
 
   def close_client
