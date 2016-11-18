@@ -1,6 +1,5 @@
 require './lib/word_search'
 require 'minitest/autorun'
-require 'minitest/emoji'
 
 class WordSearchTest < MiniTest::Test
 

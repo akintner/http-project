@@ -39,14 +39,14 @@ class ServerResponse
       else
         word_search_response(request_lines[0].split[1].split("?")[1].split("=")[1])
       end
-    elsif request_lines[0].include?("")
-      write_response ("")
     elsif request_lines[0].include?("god")
       god_response
     elsif request_lines[0].include?("start_game")
       write_response("Good Luck!")
     elsif request_lines[0].include?("game")
       write_response("Playing Number Guessing Game")
+    elsif request_lines[0].include?("") # This was catching the /god request
+      write_response ("")
     else
       "Invalid Path, please try again."
     end
@@ -54,7 +54,7 @@ class ServerResponse
 
   def word_search_response(word)
     word_search = WordSearch.new
-    if word_search.valid_word?(word)
+    if word_search.valid_word?(word) # same refactor would work as in json_class, ln 21
       "<pre>#{word.upcase} is a known word</pre>"
     else
       "<pre>#{word.upcase} is not a known word</pre>"
@@ -64,5 +64,5 @@ class ServerResponse
   def god_response
     "<pre><head><h1>Request Info</h1></head><body><h2>THE END IS NIGH, REPENT SINNERS<br>date: #{Time.now.strftime('%H:%M:%S on %a, %e %b, %Y')}<br><img src= 'https://malialitman.files.wordpress.com/2014/06/funny-dog-one.jpg'></h2></body></pre>"
   end
-  
+
 end

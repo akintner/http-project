@@ -1,6 +1,5 @@
 require './lib/game_path'
 require 'minitest/autorun'
-require 'minitest/emoji'
 
 class GameTest < Minitest::Test
 
